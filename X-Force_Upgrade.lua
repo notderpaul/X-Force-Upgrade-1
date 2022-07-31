@@ -238,7 +238,7 @@ function log(prefix, text, toconsole)
     logfile:write(log, "\n")
     logfile:close()
 end
-log("X-Force Upgrade", "Loading X-Force Upgrade" .. version)
+log("X-Force Upgrade", "Loading X-Force Upgrade " .. version)
 local missingfiles = {}
 local todownload = {
     {file["OnStart"], "gta_sa_info.wav"},
@@ -1047,7 +1047,7 @@ end
 function check_for_translations()
     local t = scandir(path["Translations"])
     if t[1] == nil then
-        log("X-Force Upgrade", "Creating translation file...")
+        log("X-Force Upgrade", "Creating translation file..")
         save_translation(file["Translation"])
     end
 end
@@ -1092,7 +1092,7 @@ function create_hotkeys()
     if s.f_exist(file["Hotkeys"]) then
         return
     end
-    log("X-Force Upgrade", "Creating hotkeys file...")
+    log("X-Force Upgrade", "Creating Hotkeys file..")
     save_hotkeys()
 end
 function load_hotkeys()
@@ -1140,7 +1140,7 @@ function reg_hotkey(id)
             if key ~= nil then
                 table_hotkeys[id][2] = keybind
                 table_hotkeys[id][3] = key
-                s.notify(table_hotkeys[id][4] .. " hotkey assigned to: " .. key)
+                s.notify(table_hotkeys[id][4] .. " Hotkey assigned to: " .. key)
                 reghotkey = nil
                 save_hotkeys()
                 openWindow()
@@ -1148,7 +1148,7 @@ function reg_hotkey(id)
             end
         end
         if time < os.time() then
-            s.notify("Time for hotkey registration has expired!")
+            s.notify("Time for Hotkey Registration has expired!")
             reghotkey = nil
             openWindow()
             return
@@ -1173,7 +1173,7 @@ function create_settings()
     if s.f_exist(file["Settings"]) then
         return
     end
-    log("X-Force Upgrade", "Creating settings file...")
+    log("X-Force Upgrade", "Creating Settings File..")
     save_settings()
 end
 function load_settings()
@@ -1219,7 +1219,7 @@ function create_vehbl()
         return
     end
     save_veh_bl()
-    log("Xhax Upgrade", "Creating Vehicle Blacklist file...")
+    log("Xhax Upgrade", "Creating Vehicle Blacklist file..")
 end
 function load_blvehs()
     for veh in io.lines(file["VehicleBlacklist"]) do
@@ -1256,13 +1256,13 @@ function check_for_updates()
     local ver = nil
     local handle =
         popen(
-        "powershell -command (New-Object System.Net.WebClient).DownloadString( 'https://raw.githubusercontent.com/Mcarxy/X-Force-Upgrade/main/Xhax')"
+        "powershell -command (New-Object System.Net.WebClient).DownloadString( 'https://raw.githubusercontent.com/Mcarxy/X-Force-Upgrade/main/Version')"
     )
     s.wait(2000)
     local result = handle:read("*a")
     handle:close()
     for _, x in ipairs(split(result, "\n")) do
-        if x:find("ver") then
+        if x:find("v") then
             ver = x
         end
     end
@@ -1271,8 +1271,8 @@ function check_for_updates()
         s.notify("New update available!", 2000)
         if table_settings[7][2] == true then
             os.rename(file["XhaxScript"], file["XhaxScript"] .. "2")
-            log("X-Force Upgrade", "Downloading update...")
-            s.notify("Downloading update..", 500)
+            log("X-Force Upgrade", "Downloading Update..")
+            s.notify("Downloading Update..", 500)
             s.wait(300)
             local handle =
                 popen(
