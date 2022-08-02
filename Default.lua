@@ -125,6 +125,7 @@ text = {
     ["Jets Amount"] = "Jets Amount",
     ["Send Jet Lesters"] = "Send Jet Lesters",
     ["Electrocute"] = "Electrocute",
+    ["Disable God Mode"] = "Disable God Mode",
     ["Claim Session Bounty"] = "Claim Session Bounty",
     ["Auto Heal"] = "Auto Heal",
     ["Hard Vehicle Sex"] = "Hard Vehicle Sex",
